@@ -44,5 +44,29 @@ for (let i = 0; i < input_datas.length; i++) {
         } else {
             inputMsg[i].innerHTML = `<i class="fa-solid fa-circle-check" style="color: #8e8e8e;"></i>`;
         }
+        if(i == 2){
+			$.ajax({
+				type: "get",
+				url: "/app/auth/username/check",
+				data: {
+					"username": input.value
+				},
+				dataType: "text",
+				success: function(data){
+					alert(data);
+				}
+			})
+		}
     }
 }
+
+
+
+
+
+
+
+
+
+
+

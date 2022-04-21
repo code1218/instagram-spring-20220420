@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="/app/static/css/style.css">
     <link rel="stylesheet" href="/app/static/css/signup.css">
     <script src="https://kit.fontawesome.com/ede2458143.js" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 
 <body>
