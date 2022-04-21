@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.instagram.app.service.AuthService;
+import com.instagram.app.web.dto.auth.SignupRequestDto;
 
 @Controller
 public class AuthController {
@@ -20,11 +21,19 @@ public class AuthController {
 		return "auth/signup";
 	}
 	
+	@RequestMapping(value = "/auth/signup", method = RequestMethod.POST)
+	public String signupSubmit(SignupRequestDto signupRequestDto) {
+		System.out.println(signupRequestDto);
+		return null;
+	}
+	
 	@ResponseBody
 	@RequestMapping(value = "/auth/username/check", method = RequestMethod.GET)
-	public boolean usernameCheck(String username) {
-		return authService.checkUsername(username);
+	public String usernameCheck(String username) {
+		return Boolean.toString(authService.checkUsername(username));
 	}
+	
+	
 }
 
 
