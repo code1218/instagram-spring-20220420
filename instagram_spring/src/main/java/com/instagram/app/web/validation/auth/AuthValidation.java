@@ -6,6 +6,7 @@ import java.util.Map;
 
 public class AuthValidation {
 	public Map<Boolean, String> isNull(String name, String value){
+		
 		Map<Boolean, String> result = new HashMap<Boolean, String>();
 		
 		if(value == null) {

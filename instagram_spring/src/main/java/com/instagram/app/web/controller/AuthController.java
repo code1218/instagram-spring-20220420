@@ -1,5 +1,7 @@
 package com.instagram.app.web.controller;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,17 +27,16 @@ public class AuthController {
 	}
 	
 	@RequestMapping(value = "/auth/signin", method = RequestMethod.POST)
-	public String signinSubmit(String usernmae, String password) {
+	public String signinSubmit(String username, String password) throws UnsupportedEncodingException {
 		AuthValidation authValidation = new AuthValidation();
-		
-		Map<Boolean, String> usernameIsNull = authValidation.isNull("username", usernmae);
+		Map<Boolean, String> usernameIsNull = authValidation.isNull("username", username);
 		Map<Boolean, String> passwordIsNull = authValidation.isNull("password", password);
 		
 		if(usernameIsNull != null) {
-			return "redirect: /app/auth/signin/error?msg=" + usernameIsNull.get(true);
+			return "redirect: /app/auth/signin/error?msg=" + URLEncoder.encode(usernameIsNull.get(true), "UTF-8");
 		}
 		if(passwordIsNull != null) {
-			return "redirect: /app/auth/signin/error?msg=" + usernameIsNull.get(true);
+			return "redirect: /app/auth/signin/error?msg=" + URLEncoder.encode(passwordIsNull.get(true), "UTF-8");
 		}
 		
 		return "index";
