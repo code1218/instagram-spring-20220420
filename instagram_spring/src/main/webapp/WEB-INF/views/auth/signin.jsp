@@ -22,7 +22,7 @@
                 </div>
                 <div class="r-content">
                     <div class="item-box">
-                        <h1 class="b-logo"><img src="/app/staticimages/instagram_logo.PNG"></h1>
+                        <h1 class="b-logo"><img src="/app/static/images/instagram_logo.PNG"></h1>
                         <div class="items-group">
                             <div class="items-group-form">
                                 <div class="input-items">
