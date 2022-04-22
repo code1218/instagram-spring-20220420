@@ -15,7 +15,6 @@ public class AuthController {
 	@Autowired 
 	private AuthService authService;
 	
-	
 	@RequestMapping(value = "/auth/signup", method = RequestMethod.GET)
 	public String getSignup() {
 		return "auth/signup";
@@ -23,7 +22,7 @@ public class AuthController {
 	
 	@RequestMapping(value = "/auth/signup", method = RequestMethod.POST)
 	public String signupSubmit(SignupRequestDto signupRequestDto) {
-		System.out.println(signupRequestDto);
+		boolean result = authService.signup(signupRequestDto);
 		return null;
 	}
 	
@@ -32,6 +31,8 @@ public class AuthController {
 	public String usernameCheck(String username) {
 		return Boolean.toString(authService.checkUsername(username));
 	}
+	
+	
 	
 	
 }
