@@ -1,5 +1,7 @@
 package com.instagram.app.web.controller;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.instagram.app.service.AuthService;
 import com.instagram.app.web.dto.auth.SignupRequestDto;
 import com.instagram.app.web.util.auth.AuthResponseScript;
+import com.instagram.app.web.validation.auth.AuthValidation;
 
 @Controller
 public class AuthController {
@@ -21,6 +24,23 @@ public class AuthController {
 		return "auth/signin";
 	}
 	
+	@RequestMapping(value = "/auth/signin", method = RequestMethod.POST)
+	public String signinSubmit(String usernmae, String password) {
+		AuthValidation authValidation = new AuthValidation();
+		
+		Map<Boolean, String> usernameIsNull = authValidation.isNull("username", usernmae);
+		Map<Boolean, String> passwordIsNull = authValidation.isNull("password", password);
+		
+		if(usernameIsNull != null) {
+			return "redirect: /app/auth/signin/error?msg=" + usernameIsNull.get(true);
+		}
+		if(passwordIsNull != null) {
+			return "redirect: /app/auth/signin/error?msg=" + usernameIsNull.get(true);
+		}
+		
+		return "index";
+	}
+	
 	@RequestMapping(value = "/auth/signup", method = RequestMethod.GET)
 	public String getSignup() {
 		return "auth/signup";
@@ -31,7 +51,7 @@ public class AuthController {
 	public String signupSubmit(SignupRequestDto signupRequestDto) {
 		boolean result = authService.signup(signupRequestDto);
 		AuthResponseScript script = new AuthResponseScript();
-		return script.SignupScript(result);
+		return script.signupScript(result);
 	}
 	
 	@ResponseBody

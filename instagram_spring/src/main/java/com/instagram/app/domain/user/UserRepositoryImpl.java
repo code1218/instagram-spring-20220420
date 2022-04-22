@@ -18,6 +18,7 @@ public class UserRepositoryImpl implements UserRepository {
 	
 	@Override
 	public int signup(User user) {
+		
 		return session.insert(NAME_SPACE + "signup", user);
 	}
 }

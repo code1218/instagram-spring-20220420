@@ -2,7 +2,7 @@ package com.instagram.app.web.util.auth;
 
 public class AuthResponseScript {
 	
-	public String SignupScript(boolean result) {
+	public String signupScript(boolean result) {
 		StringBuilder script = new StringBuilder();
 		
 		if(result) {
@@ -19,4 +19,26 @@ public class AuthResponseScript {
 		
 		return script.toString();
 	}
+	
+	public String signinValidScript(String msg) {
+		StringBuilder script = new StringBuilder();
+		
+		script.append("<script>");
+		script.append("alert(\"" + msg + "\");");
+		script.append("location.replace(\"/app/auth/signin\");");
+		script.append("</script>");
+		
+		return script.toString();
+	}
 }
+
+
+
+
+
+
+
+
+
+
+

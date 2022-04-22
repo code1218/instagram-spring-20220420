@@ -1,5 +1,7 @@
 package com.instagram.app.web.dto.auth;
 
+import org.mindrot.jbcrypt.BCrypt;
+
 import com.instagram.app.domain.user.User;
 
 import lombok.AllArgsConstructor;
@@ -30,7 +32,7 @@ public class SignupRequestDto {
 				.email(email)
 				.name(name)
 				.username(username)
-				.password(password)
+				.password(BCrypt.hashpw(password, BCrypt.gensalt()))
 				.build();
 	}
 }
