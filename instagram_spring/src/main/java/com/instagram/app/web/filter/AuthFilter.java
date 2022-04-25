@@ -31,8 +31,6 @@ public class AuthFilter implements Filter{
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 		
-		System.out.println("필터가 실행되었습니다.");
-		
 		HttpServletRequest httpServletRequest = (HttpServletRequest)request;
 		HttpServletResponse httpServletResponse = (HttpServletResponse)response;
 		
@@ -54,7 +52,6 @@ public class AuthFilter implements Filter{
 				return;
 			}
 		}
-		
 		
 		chain.doFilter(httpServletRequest, httpServletResponse);
 		

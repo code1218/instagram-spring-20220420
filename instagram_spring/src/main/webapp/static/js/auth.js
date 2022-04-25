@@ -36,13 +36,3 @@ password_input.onkeyup = () => {
         password_label.style.fontSize = "13px";
     }
 }
-
-signin_button.onclick = () => {
-    if (username_input.value.length == 0) {
-        alert("아이디를 입력해주세요.");
-    } else if (password_input.value.length == 0) {
-        alert("비밀번호를 입력해주세요.");
-    } else {
-        alert("로그인 시도");
-    }
-}

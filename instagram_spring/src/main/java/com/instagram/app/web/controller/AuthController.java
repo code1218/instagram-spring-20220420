@@ -37,7 +37,7 @@ public class AuthController {
 		}
 		if(passwordIsNull != null) {
 			return "redirect: /app/auth/signin/error?msg=" + URLEncoder.encode(passwordIsNull.get(true), "UTF-8");
-		}
+		} 
 		
 		User user = authService.signin(username, password);
 		if(user != null) {
@@ -66,7 +66,12 @@ public class AuthController {
 		return Boolean.toString(authService.checkUsername(username));
 	}
 	
-	
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String signout(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		session.invalidate();
+		return "redirect: /app/auth/signin";
+	}
 	
 	
 }
