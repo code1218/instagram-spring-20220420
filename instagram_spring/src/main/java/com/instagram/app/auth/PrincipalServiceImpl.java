@@ -7,15 +7,16 @@ import org.springframework.stereotype.Service;
 import com.instagram.app.domain.user.User;
 import com.instagram.app.domain.user.UserRepository;
 
+import lombok.AllArgsConstructor;
+
 @Service
 public class PrincipalServiceImpl implements PrincipalService {
-	
 	@Autowired
-	private UserRepository repository;
+	private UserRepository userRepository;
 	
 	@Override
 	public User loadUserByUsername(String username) {
-		return repository.getUserByUsername(username);
+		return userRepository.getUserByUsername(username);
 	}
 	
 	@Override
