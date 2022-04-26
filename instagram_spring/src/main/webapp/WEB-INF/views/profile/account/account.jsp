@@ -10,6 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>instagram</title>
     <link rel="stylesheet" href="/app/static/css/account.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 
 <body>
@@ -173,6 +174,7 @@
 
         </footer>
     </section>
+    <script type="text/javascript" src="/app/static/js/account.js"></script>
 </body>
 
 </html>
