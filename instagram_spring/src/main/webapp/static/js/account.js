@@ -5,21 +5,27 @@ const submitBtn = document.querySelector(".submit-btn");
 
 let usercode = 0;
 
-$.ajax({
-	type: "get",
-	url: "/app/profile/account/user",
-	data: {
-		usercode : 12
-	},
-	dataType: "text",
-	success: function(data){
-		let account = JSON.parse(data);
-		pageLoad(account);
-	},
-	error: function(){
-		alert("비동기 처리 오류");
-	}
-})
+let principal = getPrincipal();
+
+load();
+
+function load() {
+	$.ajax({
+		type: "get",
+		url: "/app/profile/account/user",
+		data: {
+			usercode : principal.usercode
+		},
+		dataType: "text",
+		success: function(data){
+			let account = JSON.parse(data);
+			pageLoad(account);
+		},
+		error: function(){
+			alert("비동기 처리 오류");
+		}
+	});
+}
 
 function pageLoad(account){
 	usercode = account.usercode;
@@ -42,7 +48,12 @@ submitBtn.onclick = () => {
 		contentType: "application/json; charset=utf-8",
 		dataType: "text",
 		success: function(data){
-			alert("전송됨");
+			if(data == "true"){
+				alert("회원정보 수정 완료.");
+				location.replace("/app/profile/account");
+			}else {
+				alert("이미 존재하는 사용자 이름입니다.");
+			}
 		},
 		error: function(){
 			alert("비동기 처리 오류");
