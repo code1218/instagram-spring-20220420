@@ -66,7 +66,7 @@
                                 <h1 class="profile-username username-sizeup">junil</h1>
                             </div>
                         </form>
-                        <form class="profile-box-form2">
+                        <form class="profile-box-form2" enctype="application/json">
                             <div class="box-items">
                                 <div class="box-item-left">
                                     <label for="origin-password">이전 비밀번호</label>

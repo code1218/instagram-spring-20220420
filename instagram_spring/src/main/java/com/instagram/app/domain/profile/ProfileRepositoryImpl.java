@@ -27,6 +27,11 @@ public class ProfileRepositoryImpl implements ProfileRepository {
 	public int updateUserDtl(Account account) {
 		return session.update(NAME_SPACE + "updateUserDtl", account);
 	}
+	
+	@Override
+	public int updatePassword(User user) {
+		return session.update(NAME_SPACE + "updatePassword", user);
+	}
 }
 
 
