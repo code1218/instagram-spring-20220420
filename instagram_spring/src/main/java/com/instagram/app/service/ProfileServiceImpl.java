@@ -11,11 +11,13 @@ import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.instagram.app.config.FileConfig;
+import com.instagram.app.domain.profile.ProfileImg;
 import com.instagram.app.domain.profile.ProfileRepository;
 import com.instagram.app.domain.user.User;
 import com.instagram.app.domain.user.UserRepository;
-import com.instagram.app.web.dto.AccountUpdateImgReqDto;
 import com.instagram.app.web.dto.account.AccountResponseDto;
+import com.instagram.app.web.dto.account.AccountUpdateImgReqDto;
 import com.instagram.app.web.dto.account.AccountUpdateReqDto;
 import com.instagram.app.web.dto.account.PasswordUpdateRepDto;
 
@@ -53,7 +55,7 @@ public class ProfileServiceImpl implements ProfileService {
 		if(accountUpdateImgReqDto.getFile() != null) {
 			String imageFileName = accountUpdateImgReqDto.getFile().getOriginalFilename();
 			String tempImageFileName = UUID.randomUUID().toString().replaceAll("-", "") + "_" + imageFileName;
-			final String path = "C:/junil/junil/workspace/git/instagram-spring/instagram_spring/fileupload/profile"; 
+			String path = FileConfig.profileImgPath;
 			Path imgeFilePath = Paths.get(path + "/" + tempImageFileName);
 			
 			File file = new File(path);
@@ -65,6 +67,13 @@ public class ProfileServiceImpl implements ProfileService {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+			
+			ProfileImg profileImg = ProfileImg.builder()
+					.usercode(user.getUsercode())
+					.img_url(tempImageFileName)
+					.build();
+			
+			return profileRepository.updateProfileImg(profileImg) != 0;
 		}
 		return false;
 	}
