@@ -25,11 +25,7 @@ public class PrincipalServiceImpl implements PrincipalService {
 	
 	@Override
 	public boolean passwordCheck(String password, User user) {
-		if(BCrypt.checkpw(password, user.getPassword())) {
-			return true;
-		}else {
-			return false;
-		}
+		return BCrypt.checkpw(password, user.getPassword());
 	}
 	
 	@Override

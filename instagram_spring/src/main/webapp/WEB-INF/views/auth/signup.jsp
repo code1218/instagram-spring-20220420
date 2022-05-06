@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>instagram</title>
-    <link rel="stylesheet" href="/app/static/css/style.css">
+    <link rel="stylesheet" href="http://localhost:8000/app/static/css/style.css">
     <link rel="stylesheet" href="/app/static/css/signup.css">
     <script src="https://kit.fontawesome.com/ede2458143.js" crossorigin="anonymous"></script>
 	<script src="https://code.jquery.com/jquery-latest.min.js"></script>

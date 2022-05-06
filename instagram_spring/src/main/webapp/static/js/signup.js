@@ -62,7 +62,6 @@ for (let i = 0; i < input_datas.length; i++) {
 						if(data == "true"){
 							inputMsg[i].innerHTML = `<i class="fa-solid fa-circle-xmark"></i>`;
 							checkFlag[i] = false;
-							
 						}else{
 							inputMsg[i].innerHTML = `<i class="fa-solid fa-circle-check" style="color: #8e8e8e;"></i>`;
 							checkFlag[i] = true;
